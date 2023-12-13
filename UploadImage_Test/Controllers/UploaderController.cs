@@ -15,12 +15,12 @@ namespace UploadImage_Test.Controllers
             try
             {
                 Console.WriteLine(fileModel);
-                string path = Path.Combine("ImageVersDossier", fileModel.File.FileName);
+                string path = Path.Combine(fileModel.Directory, fileModel.File.FileName);
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
                     fileModel.File.CopyTo(stream);
                 }
-                 response.Statuscode = 200;
+                response.Statuscode = 200;
                 response.ErrorMessage = "Created";
                 return response;
             }
